@@ -72,8 +72,11 @@
       font-size: 10px;
       margin: 10px 20px;
       white-space: nowrap;
+      transition: all 100ms ease-in-out;
     }
-
+    .dataset-selector-container .dataset-head .dataset-main h5:nth-of-type(2){
+      margin: 10px 25px;
+    }
     .dataset-selector-container .dataset-head .dataset-main h2 {
       /* background: red; */
       width: 85%;
@@ -85,8 +88,15 @@
       display: flex;
       /* background: rgb(190, 183, 183); */
       /* width: 150px; */
+      transition: all 100ms ease-in-out;
+      cursor: pointer;
     }
 
+    .dataset-selector-container .dataset-head .dataset-main h2:hover
+    /* ,.dataset-selector-container .dataset-head .dataset-main h5:hover */
+    {
+      transform: scale(1.25);
+    }
     .dataset-selector-container .dataset-head .dataset-main h2 span.arr {
       /* background: rgb(253, 0, 0); */
       display: flex;
@@ -129,6 +139,7 @@
       padding: 3px 5px 5px 5px;
       width: 120px;
       border-radius: 30px;
+      cursor: pointer;
     }
 
     .dataset-selector-container .dataset-head .dataset-sub .blue.is-selected {
@@ -144,6 +155,7 @@
       letter-spacing: 0.04em;
       /* margin: 4px 0; */
       white-space: nowrap;
+      cursor: pointer;
 
       padding: 3px 5px 5px 5px;
       width: 120px;
@@ -163,6 +175,7 @@
       line-height: 19px;
       letter-spacing: 0.04em;
       /* margin: 4px 0; */
+      cursor: pointer;
 
       padding: 3px 5px 5px 5px;
       width: 180px;
@@ -1016,6 +1029,31 @@ background: #006379;
   </form>
 
   <script>
+    //head text select
+    const btn1 = document.querySelector('.dataset-sub .blue')
+    const btn2 = document.querySelector('.dataset-sub .green')
+    const btn3 = document.querySelector('.dataset-sub .saf')
+
+    const selected = (e) =>{
+      if(e.target.classList.contains('is-selected')){
+        console.log('already selected')
+        return;
+      } else{
+        // removes existing active classes
+      btn1.classList.remove('is-selected')
+      btn2.classList.remove('is-selected')
+      btn3.classList.remove('is-selected')
+
+      // adds active classed
+      e.target.classList.add('is-selected')
+      }
+    }
+
+    btn1.addEventListener('click',selected)
+    btn2.addEventListener('click',selected)
+    btn3.addEventListener('click',selected)
+
+
     document.querySelectorAll(".__range-step").forEach(function(ctrl) {
 	var el = ctrl.querySelector('input');        
 	var output = ctrl.querySelector('output'); 
